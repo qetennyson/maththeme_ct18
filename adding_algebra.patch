@@ -1,0 +1,29 @@
+Index: ch3_data_stats/biters.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ch3_data_stats/biters.py	(date 1543012529953)
++++ ch3_data_stats/biters.py	(date 1543012529953)
+@@ -0,0 +1,20 @@
++from collections import Counter
++import csv
++
++biters = []
++def read_csv(file):
++    global biters
++
++    with open(file) as f:
++        reader = csv.reader(f)
++        next(reader)
++        for row in reader:
++            biters.append(row[2])
++
++
++read_csv('animal-bites-1.csv')
++read_csv('animal-bites-2.csv')
++c = Counter(biters)
++top_5_biters = c.most_common(5)
++
++print(top_5_biters)
+\ No newline at end of file
